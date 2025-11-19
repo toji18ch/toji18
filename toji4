@@ -1,0 +1,165 @@
+4.a)Setup navigation between different screens using Navigator.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Navigation Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333; 
+            color: #fff;
+            text-align: center; 
+            padding: 1em;
+        }
+
+        main {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px;
+        }
+
+        section { 
+            display: none;
+        }
+
+        footer {
+            background-color: #333; 
+            color: #fff;
+            text-align: center; 
+            padding: 1em; 
+            position: fixed; 
+            bottom: 0;
+            width: 100%;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header class="jumbotron text-center">
+    <h1>Screen Navigation Example</h1>
+</header>
+
+main>
+    <section id="home" class="active">
+        <h2>Home Screen</h2>
+        <p>Welcome to the Home Screen.</p>
+        <button onclick="navigateTo('about')">Go to About</button>
+    </section>
+
+    <section id="about">
+        <h2>About Screen</h2>
+        <p>This is the About Screen.</p>
+        <button onclick="navigateTo('home')">Go to Home</button>
+    </section>
+</main>
+
+<footer class="bg-dark text-light text-center py-3 mt-5">
+    &copy; 2024 Your Company Name
+</footer>
+
+<script>
+    function navigateTo(screenId) {
+        // Hide all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Show the selected section
+        document.getElementById(screenId).classList.add('active');
+    }
+</script>
+
+
+4b)Implement navigation with named routes.
+Ans)
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Named Routes Navigation Example',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/about': (context) => AboutScreen(),
+      },
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Welcome to the Home Screen.',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/about');
+              },
+              child: Text('Go to About'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AboutScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('About Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'This is the About Screen.',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Go back to Home'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+</body>
+</html>
