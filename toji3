@@ -1,0 +1,119 @@
+3.a)Design a responsive UI that adapts to different screen sizes.
+
+Ans)
+<!DOCTYPEhtml>
+<htmllang="en">
+<head>
+<metacharset="UTF-8">
+<metaname="viewport"content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Responsive UI Example</title>
+</head>
+<body>
+<div class="container">
+<header class="jumbotrontext-center">
+<h1>ResponsiveUIExample</h1>
+</header>
+
+<main>
+<sectionclass="mb-4">
+<h2>Section1</h2>
+<p>Thisissomecontentforsection1.</p>
+</section>
+
+<sectionclass="mb-4">
+<h2>Section2</h2>
+<p>Thisissomecontentforsection2.</p>
+</section>
+</main>
+<footerclass="bg-darktext-lighttext-centerpy-3mt-5">&copy; 2024 Your Company Name
+</footer>
+</div>
+
+<!--BootstrapJSanddependencies(jQuery)-->
+<scriptsrc="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></ script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></ script>
+</body>
+</html>
+
+
+3b)Implement media queries and break points for responsiveness.
+
+Ans)<!DOCTYPE html>
+<htmllang="en">
+<head>
+<metacharset="UTF-8">
+<metaname="viewport"content="width=device-width,initial-scale=1.0">
+<link	rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+body {
+font-family:Arial,sans-serif; margin: 0;
+padding:0;
+background-color:#f4f4f4;
+}
+
+header{
+background-color:#333; color: #fff;
+text-align:center; padding: 1em;
+}
+
+main{
+max-width:1200px; margin: 0 auto; padding: 20px;
+}
+
+section{
+margin-bottom:20px;
+}
+
+footer{
+
+
+background-color:#333; color: #fff;
+text-align:center; padding: 1em; position: fixed; bottom: 0;
+width:100%;
+}
+
+@mediaonlyscreenand(max-width:768px){ main {
+padding:10px;
+}
+
+footer{
+position: static;
+}
+}
+</style>
+<title>ResponsiveUIExample</title>
+</head>
+<body>
+<div class="container">
+<headerclass="jumbotrontext-center">
+<h1>ResponsiveUIExample</h1>
+</header>
+
+<main>
+<sectionclass="mb-4">
+<h2>Section1</h2>
+<p>Thisissomecontentforsection1.</p>
+</section>
+
+<sectionclass="mb-4">
+<h2>Section2</h2>
+<p>Thisissomecontentforsection2.</p>
+</section>
+</main>
+
+<footerclass="bg-darktext-lighttext-centerpy-3mt-5">&copy; 2024 Your Company Name
+</footer>
+</div>
+
+<!--BootstrapJSanddependencies(jQuery)-->
+<scriptsrc="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></ script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></ script>
+</body>
+</html>
