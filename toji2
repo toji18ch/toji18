@@ -1,0 +1,302 @@
+2a)ExplorevariousFlutterwidgets(Text,Image,Container,etc.).
+
+TextWidget:
+
+import 'package:flutter/material.dart';
+
+// function to trigger build process
+void main() => runApp(const GeeksforGeeks());
+
+class GeeksforGeeks extends StatelessWidget {
+  const GeeksforGeeks({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.lightGreen,
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: const Text("Welcome Screen"),
+        ),
+        body: Container(
+          child: const Center(
+            child: Text("Hello world!!"),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Output:HelloWorld!!
+
+ImageWidget:
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Insert Image Demo'),
+        ),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/output.gif',
+                height: 200,
+                scale: 2.5,
+                color: Color.fromARGB(255, 15, 147, 59),
+                opacity: AlwaysStoppedAnimation<double>(0.5),
+              ),
+              Image.asset(
+                'assets/images/geeksforgeeks.jpg',
+                height: 400,
+                width: 400,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+ContainterWidget:
+
+import 'package:flutter/material.dart';
+
+// function to trigger build process
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Containerexample"),
+        ),
+        body: Container(
+          height: 200,
+          width: double.infinity,
+          // moved color into decoration because decoration is used below
+          alignment: Alignment.center,
+          margin: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(30),
+          decoration: BoxDecoration(
+            color: Colors.purple,
+            border: Border.all(color: Colors.black, width: 3),
+          ),
+          child: const Text(
+            "Hello!iaminsideacontainer!",
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+2b) implement different layout structures using row, Column, and stack widgets 
+row widget
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Row Example"),
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.green,
+            ),
+            child: Text(
+              "React.js",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.green,
+            ),
+            child: Text(
+              "MySQL",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.green,
+            ),
+            child: Text(
+              "Flutter",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+ColumnWidget:
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Column Example"),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.red,
+            ),
+            child: Text(
+              "MySQL",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.red,
+            ),
+            child: Text(
+              "React.js",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.red,
+            ),
+            child: Text(
+              "Flutter",
+              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+StackWidget:
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('GeeksforGeeks'),
+          backgroundColor: Colors.greenAccent[400],
+        ),
+        body: Center(
+          child: SizedBox(
+            width: 300,
+            height: 300,
+            child: Center(
+              child: Stack(
+                children: <Widget>[
+                  // Bottom layer
+                  Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.red,
+                  ),
+                  // Middle layer
+                  Container(
+                    width: 250,
+                    height: 250,
+                    color: Colors.black,
+                  ),
+                  // Top layer
+                  Container(
+                    width: 200,
+                    height: 200,
+                    color: Colors.purple,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
