@@ -89,6 +89,8 @@ class _MyAnimatedWidgetState extends State<MyAnimatedWidget> with SingleTickerPr
 
 8b)Experiment with different types of animations(fade, slide, etc.).
 Ans)
+fadeanimation 
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -159,6 +161,175 @@ class _FadeAnimationWidgetState extends State<FadeAnimationWidget> with SingleTi
                   color: Colors.white,
                   fontSize: 20,
                 ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+}
+
+
+SlideAnimation:
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Slide Animation Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: SlideAnimationWidget(),
+    );
+  }
+}
+
+class SlideAnimationWidget extends StatefulWidget {
+  @override
+  _SlideAnimationWidgetState createState() => _SlideAnimationWidgetState();
+}
+
+class _SlideAnimationWidgetState extends State<SlideAnimationWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: Offset(-1.0, 0.0),
+      end: Offset(0.0, 0.0),
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _animationController.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Slide Animation Example'),
+      ),
+      body: SlideTransition(
+        position: _slideAnimation,
+        child: Container(
+          width: 200,
+          height: 200,
+          color: Colors.blue,
+          child: Center(
+            child: Text(
+              'Slide Animation',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+}
+
+
+ScaleAnimation:
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Scale Animation Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ScaleAnimationWidget(),
+    );
+  }
+}
+
+class ScaleAnimationWidget extends StatefulWidget {
+  @override
+  _ScaleAnimationWidgetState createState() => _ScaleAnimationWidgetState();
+}
+
+class _ScaleAnimationWidgetState extends State<ScaleAnimationWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _animationController.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scale Animation Example'),
+      ),
+      body: ScaleTransition(
+        scale: _scaleAnimation,
+        child: Container(
+          width: 200,
+          height: 200,
+          color: Colors.blue,
+          child: Center(
+            child: Text(
+              'Scale Animation',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
               ),
             ),
           ),
