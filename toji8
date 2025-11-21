@@ -1,346 +1,93 @@
-8.a)Add animations to UI elements using Flutter's animation framework.
-
-Ans)
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Animation Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyAnimatedWidget(),
-    );
-  }
-}
-
-class MyAnimatedWidget extends StatefulWidget {
-  @override
-  _MyAnimatedWidgetState createState() => _MyAnimatedWidgetState();
-}
-
-class _MyAnimatedWidgetState extends State<MyAnimatedWidget> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _opacityAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Create an AnimationController with a duration of 1 second
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
-
-    // Create a Tween to animate opacity from 0.0 to 1.0
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    // Start the animation
-    _animationController.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Animation Example'),
-      ),
-      body: Center(
-        child: FadeTransition(
-          opacity: _opacityAnimation,
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'Animated Widget',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-}
-
-
-8b)Experiment with different types of animations(fade, slide, etc.).
-Ans)
-fadeanimation 
-
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fade Animation Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: FadeAnimationWidget(),
-    );
-  }
-}
-
-class FadeAnimationWidget extends StatefulWidget {
-  @override
-  _FadeAnimationWidgetState createState() => _FadeAnimationWidgetState();
-}
-
-class _FadeAnimationWidgetState extends State<FadeAnimationWidget> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _opacityAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Create an AnimationController with a duration of 10 seconds
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 10),
-    );
-
-    // Create a Tween to animate opacity from 0.0 to 1.0
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    // Start the animation
-    _animationController.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Fade Animation Example'),
-      ),
-      body: Center(
-        child: FadeTransition(
-          opacity: _opacityAnimation,
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'Fade Animation',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-}
-
-
-SlideAnimation:
-
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Slide Animation Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SlideAnimationWidget(),
-    );
-  }
-}
-
-class SlideAnimationWidget extends StatefulWidget {
-  @override
-  _SlideAnimationWidgetState createState() => _SlideAnimationWidgetState();
-}
-
-class _SlideAnimationWidgetState extends State<SlideAnimationWidget> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 2),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: Offset(-1.0, 0.0),
-      end: Offset(0.0, 0.0),
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    _animationController.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Slide Animation Example'),
-      ),
-      body: SlideTransition(
-        position: _slideAnimation,
-        child: Container(
-          width: 200,
-          height: 200,
-          color: Colors.blue,
-          child: Center(
-            child: Text(
-              'Slide Animation',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-}
-
-
-ScaleAnimation:
-
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Scale Animation Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ScaleAnimationWidget(),
-    );
-  }
-}
-
-class ScaleAnimationWidget extends StatefulWidget {
-  @override
-  _ScaleAnimationWidgetState createState() => _ScaleAnimationWidgetState();
-}
-
-class _ScaleAnimationWidgetState extends State<ScaleAnimationWidget> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 2),
-    );
-
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    _animationController.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Scale Animation Example'),
-      ),
-      body: ScaleTransition(
-        scale: _scaleAnimation,
-        child: Container(
-          width: 200,
-          height: 200,
-          color: Colors.blue,
-          child: Center(
-            child: Text(
-              'Scale Animation',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-}
+EXPERIMENT No.8 
+ 
+8. Integrate Kubernetes and Docker 
+   
+Enable Kubernetes 
+Kubernetes itself runs in containers. When you deploy a Kubenetes cluster you first install 
+Docker (or another container runtime like containerd) and then use tools like kubeadm which 
+starts all the Kubernetes components in containers. Docker Desktop does all that for you. 
+Make sure you have Docker Desktop running - in the taskbar in Windows and the menu bar on 
+the Mac you’ll see Docker’s whale logo. Click the whale and select Settings: 
+ 
+A new screen opens with all of Docker Desktop’s configuration options. Click 
+on Kubernetes and check the Enable Kubernetes checkbox: 
+ 
+58  
+ 
+That’s it! Docker Desktop will download all the Kubernetes images in the background and get 
+everything started up. When it’s ready you’ll see two green lights in the bottom of the settings 
+screen saying Docker running and Kubernetes running. 
+The star in the screenshot shows the Reset Kubernetes Cluster button, which is one of the 
+reasons why Docker Desktop is the best of the local Kubernetes options. Click that and it will 
+reset your cluster back to a fresh install of Kubernetes. 
+3. Verify your Kubernetes cluster 
+If you’ve worked with Docker before, you’re used to managing containers with 
+the docker and docker-compose command lines. Kubernetes uses a different tool called kubectl to 
+manage apps - Docker Desktop installs kubectl for you too. 
+Check the state of your Docker Desktop cluster: 
+kubectl get nodes 
+You should see a single node in the output called docker-desktop. That’s a full Kubernetes cluster, 
+with a single node that runs the Kubernetes API and your own applications. 
+The Kubernetes components are running in Docker containers, but Docker Desktop doesn’t show 
+them by default to keep things simple when you’re running docker commands. 
+Try: 
+docker container ls 
+and you’ll see zero containers (unless you have some of your own running). 
+But try: 
+ 
+59  
+docker info 
+And you’ll see a whole bunch of containers in the running state (18 on my machine), which are 
+the various parts of Kubernetes. 
+4. Run a familiar application 
+Let’s run the classic Docker sample voting app! It’s a distributed application which uses a 
+Postgres database and Redis message queue, with application components running in Python, 
+.NET and Node.js containers. 
+All the components of the app are published in public images on Docker Hub. All you need to 
+run it is a Kubernetes manifest - a YAML files which describes all the components of the app. 
+Here’s the voting app definition in Kubernetes which you’ll be deploying (compare it to 
+the voting app definition in Docker Compose if you want to see how Kubernetes is different): 
+kubectl apply -f https://raw.githubusercontent.com/docker/docker-birthday/master/resources/kubernetes-docker
+desktop/vote.yaml 
+It’ll take a couple of minutes for all the container images to download from Docker Hub and start 
+up. 
+5. Check the app components 
+Kubernetes runs containers for you, so instead of explicitly running them with docker container run, 
+you describe the desired outcome in a YAML file and when you run kubectl apply Kubernetes 
+starts all the containers. 
+Containers in Kubernetes are wrapped in another object called a pod. Have a look at the pods for 
+the voting app: 
+kubectl -n vote get pods 
+You should see lots of pods, with names starting db-, redis- etc. When the READY column 
+says 1/1 for every pod, that means all the containers are running. 
+You can have many containers in one pod in Kubernetes, and they share the same network 
+and compute environment. That lets you do very cool things with the sidecar pattern. 
+6. Use the app 
+Browse to http://localhost:5000 and you should see the classic voting application: 
+ 
+60  
+ 
+That’s a Python application running in a Docker container, being managed by Kubernetes. Click 
+on Cats (or Dogs) and the app sends a message to the Redis message queue. That message gets 
+picked up by a .NET worker application, which updates a Postgres database. 
+Browse to http://localhost:5001 and you’ll see the results: 
+ 
+ 
+61  
+That’s a Node.js app which reads the data from Postgres. Everything is running in containers 
+through Kubernetes. 
+7. Check the resilience 
+Kubernetes makes sure containers are running to keep your app at the service level you requested 
+in the YAML file. They’re all Docker containers which you can also manage with 
+the docker command line. 
+Print the container ID for the result app: 
+docker container ls -f name='k8s_result*' --format '{{.ID}}' 
+And now remove that container: 
+docker container rm -f $(docker container ls -f name='k8s_result*' --format '{{.ID}}') 
+Check back on the result app in your browser at http://localhost:5001 and you’ll see it’s still 
+working. Kubernetes saw that the container had been removed and started a replacement straight 
+away. 
+Print the result container ID again: 
+docker container ls -f name='k8s_result*' --format '{{.ID}}' 
+And you’ll see it’s a new container. Kubernetes makes sure the running app always matches the 
+desired state in the application YAML file. 
