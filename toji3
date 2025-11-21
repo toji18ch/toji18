@@ -1,119 +1,74 @@
-3.a)Design a responsive UI that adapts to different screen sizes.
 
-Ans)
-<!DOCTYPEhtml>
-<htmllang="en">
-<head>
-<metacharset="UTF-8">
-<metaname="viewport"content="width=device-width,initial-scale=1.0">
-<link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<title>Responsive UI Example</title>
-</head>
-<body>
-<div class="container">
-<header class="jumbotrontext-center">
-<h1>ResponsiveUIExample</h1>
-</header>
-
-<main>
-<sectionclass="mb-4">
-<h2>Section1</h2>
-<p>Thisissomecontentforsection1.</p>
-</section>
-
-<sectionclass="mb-4">
-<h2>Section2</h2>
-<p>Thisissomecontentforsection2.</p>
-</section>
-</main>
-<footerclass="bg-darktext-lighttext-centerpy-3mt-5">&copy; 2024 Your Company Name
-</footer>
-</div>
-
-<!--BootstrapJSanddependencies(jQuery)-->
-<scriptsrc="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></ script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></ script>
-</body>
-</html>
-
-
-3b)Implement media queries and break points for responsiveness.
-
-Ans)<!DOCTYPE html>
-<htmllang="en">
-<head>
-<metacharset="UTF-8">
-<metaname="viewport"content="width=device-width,initial-scale=1.0">
-<link	rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-body {
-font-family:Arial,sans-serif; margin: 0;
-padding:0;
-background-color:#f4f4f4;
-}
-
-header{
-background-color:#333; color: #fff;
-text-align:center; padding: 1em;
-}
-
-main{
-max-width:1200px; margin: 0 auto; padding: 20px;
-}
-
-section{
-margin-bottom:20px;
-}
-
-footer{
-
-
-background-color:#333; color: #fff;
-text-align:center; padding: 1em; position: fixed; bottom: 0;
-width:100%;
-}
-
-@mediaonlyscreenand(max-width:768px){ main {
-padding:10px;
-}
-
-footer{
-position: static;
-}
-}
-</style>
-<title>ResponsiveUIExample</title>
-</head>
-<body>
-<div class="container">
-<headerclass="jumbotrontext-center">
-<h1>ResponsiveUIExample</h1>
-</header>
-
-<main>
-<sectionclass="mb-4">
-<h2>Section1</h2>
-<p>Thisissomecontentforsection1.</p>
-</section>
-
-<sectionclass="mb-4">
-<h2>Section2</h2>
-<p>Thisissomecontentforsection2.</p>
-</section>
-</main>
-
-<footerclass="bg-darktext-lighttext-centerpy-3mt-5">&copy; 2024 Your Company Name
-</footer>
-</div>
-
-<!--BootstrapJSanddependencies(jQuery)-->
-<scriptsrc="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></ script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></ script>
-</body>
-</html>
+Experiment-3. 
+Practice Source code management on GitHub. Experiment with the 
+source code written in exercise 1. 
+Program Objectives: The objective of this experiment is to demonstrate the 
+process of managing source code using Git and GitHub. You will learn how to 
+initialize a local Git repository, add and commit changes to it, and then push those 
+changes to a remote repository on GitHub. Through this hands-on demonstration, 
+you will understand the workflow involved in source code management and 
+collaboration using version control systems. 
+Description: In this experiment, you will practice source code management using 
+Git and GitHub. You will start by initializing a local Git repository in your project 
+directory, adding your source code files to the repository, and committing changes 
+with descriptive commit messages. Then, you will create a remote repository on 
+GitHub and link it with your local repository. Finally, you will push your local 
+commits to the remote repository on GitHub, making your source code accessible 
+to collaborators and enabling seamless collaboration and version control. 
+Steps: 
+Step-1:Place your file in any folder 
+for example my file is 1.html . So , i will place that file in a folder named “projects” in 
+my Desktop location 
+step-2: Open terminal in the same location where your file (1.html) is located and 
+type following commands: 
+git init 
+it will initialize  new empty Git repository in the current directory where, 1.html is 
+located 
+git status 
+it Shows the current status of your files in the Git repository 
+initially, my file 1.html is not stored it git repository , so it will show 1.html it red 
+colour, which indicates that our file 1.html is not transferred to git repositroy, now 
+we need to move our file to git repository 
+ 
+git add .   
+ It will move all files which are present in my folder to git repository 
+ 
+git status 
+now, status will display “1.html” in green colour, which indicates that our file “1.html” 
+is transferred to git repository 
+ 
+“this is how we transfer files to git repository” 
+now other task is to transfer files from git to github repository: 
+step-1: 
+open git hub website  
+step 2: 
+generate token and save it any location in your system 
+open github website -> settings -> Developer settings -> personal access tokens -> 
+Token (classic) ->generate new token -> give any name to your token and accept all checkboxes > 
+generate token  
+now save that token no in text editor for future use 
+generally we need token to trasfer files from git to github website 
+step-3: 
+now create repository with any name 
+for example : here, i will give my repository name as “my repositroy: 
+step-4: 
+now we need to create branch and move 1.html which is located in git repository to 
+git hub website 
+so run these commands: 
+git commit -m “myfirstcode” 
+git branch -M master 
+git remote add origin https://github.com/NAGENDRASAICH/my-repository.git 
+git push -u origin master 
+ 
+enter user name and password(token no) 
+now you file is successfully transferred to git hub webiste fo git repository 
+Program Outcomes: Upon completion of this experiment, you will be able to: 
+1. Initialize a local Git repository for your project. 
+2. Add source code files to the local repository and commit changes with meaningful 
+commit messages. 
+3. Create a remote repository on GitHub to host your project. 
+4. Link your local Git repository with the remote repository on GitHub. 
+5. Push your local commits to the remote repository on GitHub, enabling 
+collaboration and version control. 
+6. Understand the importance of source code management and version control in 
+software development projects.
