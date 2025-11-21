@@ -1,69 +1,48 @@
-1.a) Install Flutter and Dart SDK. 
-1. System Requirements: 
-Before installing Flutter, ensure that your system meets the following requirements: 
-•	Operating System: Flutter supports Windows (7 or later), macOS (10.14 or later), and Linux (64- bit). 
-•	Disk Space: At least 400 MB of free disk space. 
-•	Tools: Git for macOS and Linux, and Power Shell for Windows (required for running Flutter commands). 
-•	Android Studio or Visual Studio Code (optional but recommended for Flutter development). 
-
-2. Download Flutter: 
-Visit the Flutter website and download the Flutter SDK for your operating system. 
-You can choose between stable, beta, or dev releases based on your preference. 
-3. Extract the Flutter SDK: 
-Once the download is complete, extract the downloaded ZIP file 
-to a location on your computer where you want to store the Flutter SDK. 
-For example, on macOS or Linux, you can extract it to your home directory or any other preferred location. 
-4. Set Up Flutter Environment: 
-Add the Flutter bin directory to your system's PATH environment variable. 
-This step allows you to run Flutter commands from any terminal window. 
-•	On macOS and Linux, you can do this by editing your shell configuration file (e.g., .bash profile, .zshrc, or .bashrc) and adding the following line: 
-
-Replace <path_to_flutter_sdk> with the actual path 
-Where you extracted the Flutter SDK. 
-•	On Windows, you can add the Flutter bin directory to the system's PATH by following these instructions. 
-
-5. Verify Flutter Installation: 
-Open a new terminal window and run the following command to verify that Flutter is properly installed: 
-
-This command should display the Flutter version and Dart version if Flutter is installed correctly. 
-6. Install Dart SDK: 
-
-Flutter comes with its own copy of the Dart SDK, so you don't need to install Dart separately. However, if you want to use Dart for non-Flutter projects or development, you can download the Dart SDK from the Dart website and follow the installation instructions provided.
-
-2b)WriteasimpleDartprogramtounderstandthelanguagebasics.
-Ans)
-
-voidmain(){
-varfirstName="John"; var lastName = "Doe";
-print("Fullnameis$firstName $lastName");
-}
-Output:FullnameisJohnDoe
-voidmain(){
-intnum1=10;//declaringnumber1 int num2 = 3; //declaring number2
-// Calculation
-intsum=num1 + num2;
-int diff = num1 - num2; intmul=num1 * num2;
-doublediv=num1/num2;//Itisdoublebecauseitoutputsnumberwith decimal.
-
-
-print("Thesumis$sum"); 
-print("The diff is $diff"); 
-print("The mul is $mul"); 
-print("The div is $div");
-}
-
-Output:
-Thesumis13Thediffis7Themulis30
-Thedivis3.3333333333333335
-
-
-import'dart:io'; 
-void main() {
-print("Enternumber:");
-int?number=int.parse(stdin.readLineSync()!); 
-print("The entered number is ${number}");
-}
-Output:
-Enternumber:
-50
-Theenterednumberis50
+Experiment - 1.Write code for a simple user registration form for 
+an event. 
+Program Objectives: 
+The objective of this program is to create a simple user registration form for an 
+event. The form will collect the user's name, age, date of birth (DOB), mobile 
+number, and Gmail address. Upon submission, the form will process the entered 
+data and possibly store it in a database or perform other operations as needed. 
+ 
+Description: 
+This HTML code creates a basic registration form with fields for the user to input 
+their name, age, DOB, mobile number, and Gmail address. The form also includes 
+a submit button for the user to submit their registration details. 
+ 
+Code: 
+<html> 
+<head> 
+<title>registration form</title> 
+</head> 
+<body> 
+<h6> 
+<label="name">Name:</label> 
+<input type="text" name="name"><br><br> 
+ 
+<label="age">Age:</label> 
+<input type="text" name="Age"><br><br> 
+ 
+<label="DOB">DOB:</label> 
+<input type="text" name="DOB"><br><br> 
+ 
+<label="mobile no">Mobile No:</label> 
+<input type="text" name="mobile no"><br><br> 
+ 
+<label="gmail">Gmail:</label> 
+<input type="text" name="Gmail"><br><br> 
+ 
+<input type="submit" value="submit"><br><br> 
+ 
+</h6> 
+</body> 
+</html> 
+ 
+Output: 
+ 
+ 
+ 
+ 
+A rendered HTML page will display the registration form as described 
+above, allowing users to input their details and submit the form 
