@@ -1,144 +1,153 @@
-10.a)WriteunittestsforUIcomponents.
-
-Ans)
-Unit tests are handy for verifying the behavior of a single function, method, or class. 
-The test package provides the core framework for writing unit tests, 
-and the flutter_test package provides additional utilities for testing widgets.
-This recipe demonstrates the core features provided by the test package using the following steps:
-Addthetestorflutter_testdependency. Create a test file.
-Create a class to test. Writeatestforourclass.
-Combinemultipletestsinagroup. Run the tests.
-Formoreinformation aboutthetestpackage,seethetestpackage documentation.
-
-1.	Addthetestdependency
-The test package provides the core functionality for writing tests in Dart. 
-This is thebest approach when writing packages consumed by web, server, and Flutter apps.
-Toaddthetestpackageasadevdependency,runflutterpubadd: content_copy
-flutterpubadddev:test
-2.	Createatestfile
-Inthisexample,createtwofiles:counter.dartandcounter_test.dart.
-Thecounter.dartfilecontains aclass thatyouwantto testand resides inthe libfolder. 
-The counter_test.dart file contains the tests themselves and lives inside the test folder.
-Ingeneral,testfilesshouldresideinsideatestfolderlocatedattherootofyourFlutter application or package. 
-Test files should always end with _test.dart, this is the convention used by the test runner when searching for tests.
-Whenyou’refinished,thefolderstructureshouldlooklikethis: content_copy
-counter_app/ lib/
-counter.dart test/
-counter_test.dart
-3.	Createaclasstotest
-Next, you need a “unit” to test. Remember: “unit” is another name for a function, method, or class. 
-For this example, create a Counter class inside the lib/counter.dart file. 
-It is responsible for incrementing and decrementing a value starting at 0.
-content_copy classCounter{ int value = 0;
-
-voidincrement()=> value++;
-voiddecrement()=>value--;
-}
-Note: For simplicity, this tutorial does not follow the “Test Driven Development” approach. If you’re more comfortable with that style of development, you can always go that route.
-
-4.	Write a test for our class
-Inside the counter_test.dart file, write the first unit test. Tests are defined using the top-level test function, and you can check if the results are correct by using the top- level expect function. Both of these functions come from the test package.
-
-content_copy
-// Import the test package and Counter class
-import 'package:counter_app/counter.dart';
-import 'package:test/test.dart';
-
-void main() {
-  test('Counter value should be incremented', () {
-    final counter = Counter();
-
-    // Increment the counter
-    counter.increment();
-
-    // Check if the counter value is 1 after increment
-    expect(counter.value, 1);
-  });
-}
-Combine multiple tests in a group
-If you want to run a series of related tests, use the flutter_test package group function to categorize the tests. Once put into a group, you can call flutter test on all tests in that group with one command.
-content_copy
-import 'package:counter_app/counter.dart';
-import 'package:test/test.dart';
-void main() {
-  group('Counter Tests', () {
-    test('value should start at 0', () {
-      expect(Counter().value, 0);
-    });
-    test('value should be incremented', () {
-      final counter = Counter();
-      counter.increment();
-      expect(counter.value, 1);
-    });
-    test('value should be decremented', () {
-      final counter = Counter();
-      counter.decrement(); // Assuming the initial value is 0, this will set it to -1
-      expect(counter.value, -1);
-    });
-  });
-}
-Run the tests
-Now that you have a Counter class with tests in place, you can run the tests.
-
-Run tests using IntelliJ or VSCode
-The Flutter plugins for IntelliJ and VSCode support running tests. This is often the best option while writing tests because it provides the fastest feedback loop as well as the ability to set breakpoints.
-IntelliJ
-Open the counter_test.dartfile
-GotoRun>Run‘testsincounter_test.dart’.Youcanalsopresstheappropriate keyboard shortcut for your platform.
-VSCode
-Open the counter_test.dartfile
-Go to Run > Start Debugging. You can also press the appropriate keyboard shortcut for your platform.
-Runtestsina terminal
-To run the all tests from the terminal, run the following command from the root of the project:
-content_copy
-fluttertesttest/counter_test.dart
-To run all tests you put into one group, run the following command from the root of the project:
-content_copy
-fluttertest--plain-name"Teststart,increment,decrement" This example uses the group created in section 5.
-10.b)Use Flutter's debugging tools to identify and fix issues.
-Ans)
-Flutter provides a set of debugging tools that can help you identify and fix issues in your app. Here's a step-by-step guide on how to use these tools:
-
-1.	Flutter devtools:
-Run your app with the flutter run command.
-Open devtools by running the following command in your terminal: bash
-Flutter pub global activate devtools flutter pub global run devtools
-
-Open your app in a chrome browser and connect it to devtools by clicking on the “Open devtools" button in the terminal or by navigating to http://127.0.0.1:9100/.
-Devtool provides tabs like inspector, Timeline, Memory, and more.
-
-2.	Flutter inspector:
-Use the flutter inspector in your integrated development environment (IDE)like Android Studio or Visual Studio Code.
-Toggletheinspectorinandroidstudiowiththeshortcutalt+Shift+D(Windows/Linux) or Option + Shift + D (Mac).
-Inspect the widget tree, modify widget properties, and observe widget relationships.
-
-3.	Hot reload:
-Leverage Hot Reload to see the immediate effect of code changes without restarting the entire app.
-Press r in the terminal or use the "hot reload" button in your ide.
-
-4.	Debugging with Breakpoints:
-Set breakpoints in your code to pause execution and inspect variables. Use the debugger in your ide to step through code and identify issues.
-
-5.	Logging:
-Utilize the print function to log messages to the console.
-
-Print('Debugging message');
-View logs in the terminal or the "Logs" tab in devtools.
-
-6.	Debug paint:
-Enable debug paint to visualize the layout and rendering of widgets. Use the debug paint size enabled and debug paint baselines enabled flags.
-Voidmain(){
-Debugpaintsizeenabled=true;//Showsboundingboxesofwidgets runapp(myapp());
-}
-
-7.	Memory Profiling:
-Use the "Memory" tab in devtools to analyze memory usage and identify potential memory leaks.
-Monitor object allocations and deallocations.
-
-8.	Performance profiling (Timeline):
-Analyze a pp performance using the "Timeline" tab in devtools. Identify UI jank, slow frames, and performance bottlenecks.
-
-9.	Flutter driver tests:
-Write automated ui test susing flutter driver.
-Simulate user interactions and validate the correctness of your ui.
-
+EXPERIMENT No.10 
+10.Install and Explore Selenium for automated testing. 
+Aim: To perform continuous testing of web applications using Selenium. 
+Theory: 
+Continuous Testing is the process of executing automated tests as part of the software delivery 
+pipeline in order to obtain feedback on the business risks associated with a software release 
+candidate as rapidly as possible. It evolves and extends test automation to address the increased 
+complexity and pace of modern application development and delivery. 
+Continuous Testing in DevOps is a software testing type that involves testing the software at 
+every stage of the software development life cycle. The goal of Continuous testing is evaluating 
+the quality of software at every step of the Continuous Delivery Process by testing early and 
+testing often. The continuous testing process in DevOps involves stakeholders like Developer, 
+DevOps, QA and 
+The old way of testing was hand off centric. The software was handed off from one team to 
+another. A project would have definite Development and QA phases. QA teams always wanted 
+more time to ensure quality. The goal was that the quality should prevail over project schedule. 
+However, business wants faster delivery of software to the end user. The newer is the software, 
+the better it can be marketed and increase revenue potential of the company. Hence, a new way of 
+testing was evolved. 
+Continuous means undisrupted testing done on a continuous basis. In a Continuous DevOps 
+process, a software change (release candidate) is continuously moving from Development to 
+Testing to Deployment. 
+Selenium 
+Selenium is an open-source tool which automates web browser testing. It is mainly used for 
+functional (unit testing & regression testing). 
+Reasons for considering Selenium (advantages): 
+1. Programming Language support – Selenium scripts can be written in major programming 
+languages like Java, Python, Perl, Php, Ruby and C#. 
+2. Web Browser support – Support cross browser testing on chrome, Firefox, internet explorer 
+and safari.  
+68 
+3. Operating Systems support – Selenium can be used on Widows, Mac or Linux. 
+In this practical, we would use Selenium for creating test cases, TestNG for getting detailed 
+report of those test cases and further we use Jenkins to run our test cases. Jenkins will see if our 
+test cases are getting passed and if those test cases fail’s we would receive an email notification. 
+And this is how we complete the process of continuous testing in DevOps. 
+Test Case: Automate amazon.in search and Facebook login. And at the end, receive a mail 
+confirmation if the test result fail. This whole process has to be automated and in continuous 
+manner for continuous testing.  
+Steps for Demonstration: 
+Step 1: Create Test cases with Selenium on Eclipse IDE. 
+Step 1.1: Download Selenium standalone-3.9.0.jar and Selenium server-3.9.0.zip files from the 
+link below and unzip the file. 
+https://selenium-release.storage.googleapis.com/index.html?path=3.9/ 
+Step 1.2: Download latest Java as a prerequisite for Eclipse followed by installation of Eclipse. 
+Step 1.3: Launch the Eclipse IDE and open Eclipse Marketplace to install TestNG plugin. 
+Step 1.4: Restart Eclipse IDE and create a new java project under New 🡪 Project 🡪 Java Project 
+and Select JRE 1.8 under “Use Execution Environment for JRE” 
+69 
+Step 1.5: Now add new package from File Tab.  
+Step 1.6: Select Project 🡪 Click New 🡪 Class and Click Finish and enter the below code 
+package<Package name>; 
+importjava.util.concurrent.TimeUnit; 
+importorg.openqa.selenium.By; 
+importorg.openqa.selenium.WebDriver; 
+70 
+importorg.openqa.selenium.chrome.ChromeDriver; 
+public class <File name> { 
+public void JenkinsTest() {  
+System.setProperty("webdriver.chrome.driver","file_location"); 
+WebDriver driver = new ChromeDriver(); 
+driver.navigate().to("https://www.amazon.in"); 
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); 
+driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Nike shoes"); 
+driver.findElement(By.xpath("/html/body/div[1]/header/div/div[1]/div[3]/div/form/div[2]/div/inp
+ ut")).click(); 
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  
+driver.navigate().back(); 
+String title = driver.getTitle(); 
+System.out.println("Page Title is:-" + title);  
+driver.navigate().to("https://www.facebook.com"); 
+driver.findElement(By.name("email")).sendKeys("abcd@gmail.com"); 
+driver.findElement(By.name("pass")).sendKeys("1234"); 
+driver.findElement(By.id("loginbutton")).click();   
+driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
+driver.quit();   
+} 
+} 
+71 
+Step 1.7: Select Project 🡪 Properties 🡪 Java Build Path 🡪 Select Add External JARs and Select 
+all the Jar files in the unzipped Selenium Jar files also in Lib folder and Selenium standalone jar 
+file. Apply changes 
+72 
+Step 1.8: Select and right click Project 🡪 Properties 🡪 Java Build Path 🡪 Select Add Library and 
+Select TestNG and click on Finish 
+Step 2:Converting into XML files for executing TestNG test suite. 
+Step 2.1: Select and right click on Class file 🡪TestNG🡪 Convert to TestNG and type the below 
+code in Preview 
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"> 
+<suite name="Suite"> 
+<test name="Test"> 
+<classes> 
+<class name="seleniumContinuousTesting"/> 
+</classes> 
+</test><!-- Test --> 
+</suite><!-- Suite --> 
+73 
+Step 2.2: Open command prompt and change the working directory to the eclipse workspace and 
+enter the command 
+java -cp C:\Users\SHWETA\eclipse workspace\Selenium\bin;C:\Users\SHWETA\eclipse
+workspace\Selenium\lib\* org.testng.TestNG testng.xml 
+Test Result: (Explanation: A new chrome browser opens up and automatically open amazon.in 
+and enter nike shoes in the search bar and then navigates back again and then open facebook.com 
+and login with email: abcd@gmail.com and password: 1234 and hit Login. This has been coded 
+in the class file) 
+74 
+75 
+Step 3: Create windows batch file 
+Create a Text Document and Type the command below and create a bat file with Save as file 
+name as shown below to create a Windows batch file 
+java -cpbin;lib/* org.testng.TestNG testing.xml 
+Step 4: Build Jenkins jobs by executing the batch file 
+Step 4.1: Install Jenkins and setup Jenkins by referring the below guide 
+https://www.jenkins.io/doc/book/installing/windows/ 
+Step 4.2: Create a new Freestyle project on Jenkins by browsing to localhost:8080 or whichever 
+port has been assigned to Jenkins during the installation. 
+76 
+Step 4.3: Under General Section 🡪 Tab on Advanced and Select the checkbox “Use custom 
+workspace” and in the Directory Form Fill enter the workspace location of Eclipse project 
+Step 4.4: Under Build Section 🡪 Select “Add build step” button 🡪 Select Execute Windows 
+batch command and in Post-build Actions Section 🡪 Select Add “post-build action” 🡪 Select 
+“Email notification” and add your email address in the Recipients field. Finally, click on Apply 
+and Save buttons. 
+77 
+Step 5: Schedule Jobs & configure email notification 
+Step 5.1: Go the Jenkins Dashboard 🡪 Manage Jenkins 🡪 Manage Plugins 🡪 Search Email 
+Extension Template 🡪 click on the checkbox and click on Install without restart. 
+Step 5.2: Turn On “Less Secure app access” of your google account, in order to receive mails 
+Step 5.3:  Go the Jenkins Dashboard 🡪 Manage Jenkins 🡪 Configure Systems 
+78 
+Step 5.4: Scroll down to E-mail Notification section at the bottom and add the details as shown 
+below 
+Step 5.5: Click on Test configuration by sending test e-mail, Enter mail address in Test e-mail 
+recipient and hit Test Configuration Button.  
+79 
+Step 5.6: Check the test mail in your Gmail inbox 
+Step 5.7: Go to the Dashboard 🡪 Select the project 🡪 Select Configure 🡪 Build Trigger Section 
+�
+� Select Build periodically checkbox and Enter the Schedule details in cron format 
+H 10 * * * 
+Meaning: In the morning 10 on every date of every month and every day of the week. 
+Step 5.8: Go to the Project 🡪 Select Build Now 
+80 
+Step 5.9: Click on the Build Number “#3” in my case 🡪 click on console output 
+Step 5.10: Verify email notification feature by creating an error by commenting any line in class 
+file under your project in Eclipse IDE 
+Step 5.11: Check your Gmail Inbox for failed Test Case mail 
+81 
+Conclusion: 
+We have successfully completed the task of executing continuous testing with the help of 
+Selenium to build test cases, TestNG to create testing.xml file so that we can integrate Jenkins for 
+continuous testing on specified time intervals and receive email notification if the test cases fail. 
