@@ -1,302 +1,55 @@
-2a)ExplorevariousFlutterwidgets(Text,Image,Container,etc.).
-
-TextWidget:
-
-import 'package:flutter/material.dart';
-
-// function to trigger build process
-void main() => runApp(const GeeksforGeeks());
-
-class GeeksforGeeks extends StatelessWidget {
-  const GeeksforGeeks({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.lightGreen,
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: const Text("Welcome Screen"),
-        ),
-        body: Container(
-          child: const Center(
-            child: Text("Hello world!!"),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-Output:HelloWorld!!
-
-ImageWidget:
-import 'package:flutter/material.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Insert Image Demo'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/output.gif',
-                height: 200,
-                scale: 2.5,
-                color: Color.fromARGB(255, 15, 147, 59),
-                opacity: AlwaysStoppedAnimation<double>(0.5),
-              ),
-              Image.asset(
-                'assets/images/geeksforgeeks.jpg',
-                height: 400,
-                width: 400,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-ContainterWidget:
-
-import 'package:flutter/material.dart';
-
-// function to trigger build process
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Containerexample"),
-        ),
-        body: Container(
-          height: 200,
-          width: double.infinity,
-          // moved color into decoration because decoration is used below
-          alignment: Alignment.center,
-          margin: const EdgeInsets.all(20),
-          padding: const EdgeInsets.all(30),
-          decoration: BoxDecoration(
-            color: Colors.purple,
-            border: Border.all(color: Colors.black, width: 3),
-          ),
-          child: const Text(
-            "Hello!iaminsideacontainer!",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-2b) implement different layout structures using row, Column, and stack widgets 
-row widget
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Row Example"),
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(12.0),
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.green,
-            ),
-            child: Text(
-              "React.js",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(12.0),
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.green,
-            ),
-            child: Text(
-              "MySQL",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(12.0),
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.green,
-            ),
-            child: Text(
-              "Flutter",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 25),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-ColumnWidget:
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Column Example"),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.red,
-            ),
-            child: Text(
-              "MySQL",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.red,
-            ),
-            child: Text(
-              "React.js",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.red,
-            ),
-            child: Text(
-              "Flutter",
-              style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-StackWidget:
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('GeeksforGeeks'),
-          backgroundColor: Colors.greenAccent[400],
-        ),
-        body: Center(
-          child: SizedBox(
-            width: 300,
-            height: 300,
-            child: Center(
-              child: Stack(
-                children: <Widget>[
-                  // Bottom layer
-                  Container(
-                    width: 300,
-                    height: 300,
-                    color: Colors.red,
-                  ),
-                  // Middle layer
-                  Container(
-                    width: 250,
-                    height: 250,
-                    color: Colors.black,
-                  ),
-                  // Top layer
-                  Container(
-                    width: 200,
-                    height: 200,
-                    color: Colors.purple,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
+Experiment-2 
+Explore Git and GitHub commands 
+ 
+Program Objectives: The objective of this experiment is to familiarize yourself 
+with essential Git and GitHub commands commonly used in day-to-day 
+development workflows. Through this experiment, you will learn how to initialize a 
+Git repository, track changes, create branches, collaborate with remote 
+repositories on GitHub, and manage version history. 
+Description: In this experiment, you will explore fundamental Git and GitHub 
+commands and their functionalities. These commands will help you understand 
+version control concepts and enable you to efficiently manage your project's 
+source code. 
+List of Git and GitHub Commands: 
+1. git init: Creates a new empty Git repository in the current directory. 
+2. git status: Shows the current status of your files in the Git repository, indicating 
+which files are staged, modified, or untracked. 
+3. git add: Stages changes (new files, modifications, deletions) in the current 
+directory. 
+ Example: 
+ git add . - stages all files in the current directory. 
+ git add file.txt - stages file.txt in the Git directory. 
+4. git commit: Saves staged changes to the local repository, creating a new 
+commit with a snapshot of the changes along with a commit message to describe 
+the changes. 
+ Example: git commit -m "my first file for website design" 
+5. git branch -M main: Renames the current branch to "main". 
+6. git remote add origin <URL>: Links your local Git repository with a remote 
+repository hosted on a service like GitHub. 
+ Example: git remote add origin 
+https://github.com/NAGENDRASAICH/myproject.git 
+7. git push -u origin main: Pushes local commits from the main branch of your 
+local repository to the remote repository named "origin" on a branch also named 
+"main". 
+8. git branch: Lists all branches in your local repository and highlights the current 
+branch. 
+9. git checkout -b <branch_name>: Creates a new branch. 
+ Example: git checkout -b sreyasnewproject 
+10. git reset: Undoes a commit. 
+ Example: git reset HEAD file.txt - unstages changes for a specific file named 
+file.txt. 
+11. git fetch: Downloads changes from a remote repository into the local 
+repository. 
+12. git merge: Merges changes from one branch into another branch. 
+13. git clone: Clones a remote repository into a new directory on your local 
+machine. 
+ Example: git clone https://github.com/example/example.git 
+14. git log: Displays a history of commits in the repository. 
+15. git pull: Fetches and downloads content from a remote repository and 
+immediately updates the local repository to match that content. 
+Program Outcomes: Upon completion of this experiment, you will be able to: 
+ Initialize a Git repository and track changes. 
+ Create branches and manage version history effectively. 
+ Collaborate with remote repositories on platforms like GitHub. 
+Understand the importance of version control in software development 
+workflows. 
