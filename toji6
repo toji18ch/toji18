@@ -1,207 +1,66 @@
-6.a)Create custom widgets for specific UI elements.
-
-Ans)
-
-import 'package:flutter/material.dart';
-
-class CustomButton extends StatelessWidget {
-  final String text;
-  final Function onPressed;
-  final Color buttonColor;
-  final Color textColor;
-
-  CustomButton({
-    required this.text,
-    required this.onPressed,
-    this.buttonColor = Colors.blue,
-    this.textColor = Colors.white,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => onPressed(),
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
-        foregroundColor: MaterialStateProperty.all<Color>(textColor),
-      ),
-      child: Text(text),
-    );
-  }
-}
-
-class CustomAlertDialog extends StatelessWidget {
-  final String title;
-  final String message;
-  final String positiveButtonText;
-  final String negativeButtonText;
-  final Function onPositivePressed;
-  final Function onNegativePressed;
-
-  CustomAlertDialog({
-    required this.title,
-    required this.message,
-    required this.positiveButtonText,
-    required this.negativeButtonText,
-    required this.onPositivePressed,
-    required this.onNegativePressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(title),
-      content: Text(message),
-      actions: <Widget>[
-        CustomButton(
-          text: negativeButtonText,
-          onPressed: () => onNegativePressed(),
-        ),
-        CustomButton(
-          text: positiveButtonText,
-          onPressed: () => onPositivePressed(),
-        ),
-      ],
-    );
-  }
-}
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Custom Button Example'),
-        ),
-        body: Center(
-          child: CustomButton(
-            text: 'Click Me',
-            onPressed: () {
-              print('Button Pressed');
-              showDialog(
-                context: context,
-                builder: (context) => CustomAlertDialog(
-                  title: 'Alert',
-                  message: 'This is a custom alert dialog.',
-                  positiveButtonText: 'OK',
-                  negativeButtonText: 'Cancel',
-                  onPositivePressed: () {
-                    print('OK Pressed');
-                    Navigator.of(context).pop();
-                  },
-                  onNegativePressed: () {
-                    print('Cancel Pressed');
-                    Navigator.of(context).pop();
-                  },
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-6b)Apply styling using themes and custom styles.
-Ans)
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const appName = 'Custom Themes';
-
-    return MaterialApp(
-      title: appName,
-      theme: ThemeData(
-        useMaterial3: true,
-        // Define the default brightness and colors.
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
-          // TRY THIS: Change to "Brightness.light" and see that all colors change
-          // to better contrast a light background.
-          brightness: Brightness.dark,
-        ),
-        // Define the default `TextTheme`. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
-        textTheme: TextTheme(
-          displayLarge: const TextStyle(
-            fontSize: 72,
-            fontWeight: FontWeight.bold,
-          ),
-          // TRY THIS: Change one of the GoogleFonts to "lato", "poppins", or "lora".
-          // The title uses "titleLarge" and the middle text uses "bodyMedium".
-          titleLarge: GoogleFonts.oswald(
-            fontSize: 30,
-            fontStyle: FontStyle.italic,
-          ),
-          bodyMedium: GoogleFonts.merriweather(),
-          displaySmall: GoogleFonts.pacifico(),
-        ),
-      ),
-      home: const MyHomePage(title: appName),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  const MyHomePage({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onSecondary,
-              ),
-        ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-      ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          color: Theme.of(context).colorScheme.primary,
-          child: Text(
-            'Text with a background color',
-            // TRY THIS: Change the Text value or change the Theme.of(context).textTheme
-            // to "displayLarge" or "displaySmall".
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-          ),
-        ),
-      ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(
-          // TRY THIS: Change the seed color to "Colors.red" or "Colors.blue".
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.pink,
-            brightness: Brightness.dark,
-          ),
-        ),
-        child: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
-        ),
-      ),
-    );
-  }
-}
+Experiment-6: 
+Explore Docker commands for content management 
+Program Objectives: 
+Familiarization with Docker Commands: Understand the basic Docker 
+commands used for managing containers and images. 
+Practical Experience: Gain hands-on experience by executing Docker 
+commands to manage containers and images. 
+Content Management: Learn how to handle Docker containers and images 
+effectively to manage content within Dockerized environments. 
+Program Description: 
+The program aims to introduce learners to fundamental Docker commands 
+necessary for content management within Docker containers. It covers essential 
+commands such as docker run, docker ps, docker stop, docker rm, docker 
+images, docker pull, docker rmi, docker-compose up, docker-compose 
+down, docker exec, and docker inspect. 
+Participants will learn how to: 
+Start and stop Docker containers. 
+Remove containers and images when they are no longer needed. 
+List existing containers and images. 
+Pull Docker images from registries. 
+Use docker-compose for managing multi-container applications. 
+Execute commands inside running containers. 
+Inspect detailed information about containers and images. 
+Commands: 
+1. docker run: Start a new container from a Docker image. 
+Example: docker run hello-world 
+2. docker ps: List the containers that are currently running. 
+Example: docker ps 
+3. docker stop: Stop a running container. 
+Example: docker stop <container_id> 
+4. docker rm: Remove a container. 
+Example: docker rm <container_id> 
+5. docker images: List all Docker images downloaded or created on your system. 
+Example: docker images 
+6. docker pull: Download a Docker image from a registry. 
+Example: docker pull nginx:latest 
+7. docker rmi: Remove a Docker image. 
+Example: docker rmi <image_id> 
+8. docker-compose up: Start services defined in a docker-compose.yml file. 
+Example: docker-compose up 
+9. docker-compose down: Stop and remove containers, networks, and volumes defined 
+in a docker-compose.yml file. 
+Example: docker-compose down 
+10. docker exec: Run a command inside a running container. 
+Example: docker exec -it <container_id> bash 
+11. docker images: List all Docker images stored locally. 
+Example: docker images 
+12. docker start: Start a stopped container. 
+Example: docker start <container_name or container_id> 
+13. docker stop: Stop a running container. 
+Example: docker stop <container_name or container_id> 
+14. docker rm: Remove a container. 
+Example: docker rm <container_name or container_id> 
+15. docker rmi: Remove a Docker image. 
+Example: docker rmi <image_name or image_id> 
+16. docker inspect: Display detailed information on one or more containers or images. 
+Example: docker inspect <container_name or image_name> 
+ 
+Command to uninstall docker: 
+sudo systemctl stop docker && sudo apt purge -y docker-ce docker-ce-cli containerd.io && 
+sudo rm -rf /etc/docker /var/lib/docker && sudo groupdel docker && sudo rm 
+/etc/apt/sources.list.d/docker.list && sudo apt update && sudo apt autoremove –y 
+ 
+Command to install docker: 
+ 
+sudo apt install docker.io
