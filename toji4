@@ -1,45 +1,41 @@
 Experiment-4 : Jenkins installation and setup, explore the Environment 
  
 Step-1: Visit official website : https://www.jenkins.io 
+-open jenkins
+-click on windows
+jenkins debian package
+this is the debian package repository on jenkins to automate installations and upgrade to use repositry.
+add the key to your system for the weekly release.
+step-2: then add a jenkins apt repository entry.
+step-3: update your local package index, then finally install jenkins.
+step-4: the apt packages were signed using the key.
+step-5: you will need to explicity a supported java runtime environment either from distribution.
+
 As I am using ubantu OS – I will select Unantu/Debian 
  
-Now run all these commands in your terminal  
-So, after running all the above commands , Jenkins will be installed in your 
-system 
+-Now run all these commands in your terminal  
+So, after running all the above commands , Jenkins will be installed in your system 
 To start jenkins not run below command: 
 sudo systemctl start Jenkins 
 To see Jenkins is active or not run below command: 
 sudo systemctl status Jenkins 
  
- 
-Now above one is the password to open Jenkins , now minimize terminal 
+-Now above one is the password to open Jenkins , now minimize terminal 
 and open any web browser and type https://localhost:8080 to open Jenkins 
  
+-Enter password  
+getting started 
  
- 
- 
- 
-Enter password  
- 
- 
-Select – install suggested plugins 
- 
- 
- 
+-Select – install suggested plugins 
  
 You can give user name And password, remember username and password because you 
 need to enter it , when ever you open jekins. by default I am giving user name as admin 
 and password as admin 
- 
- 
- 
- 
- 
- 
+
 This is your Jenkins home page 
- 
- 
-If you want to uninstall Jenkins , you can use below commands: 
+-click on save and finish. 
+-click on start using jenkins. 
+-If you want to uninstall Jenkins , you can use below commands: 
 sudo service jenkins stop 
 sudo systemctl stop jenkins 
 sudo apt-get remove jenkins 
