@@ -1,0 +1,54 @@
+EXPERIMENT NO.: 12.Develop test cases for the above containerized application using 
+selenium 
+AIM: Develop test cases for the above containerized application using selenium 
+Here is an example of how you could write test cases for the containerized 
+application using Selenium 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.chrome.ChromeDriver; 
+import org.junit.After; 
+import org.junit.Before; 
+import org.junit.Test; 
+public class Main { 
+private WebDriver driver; 
+@Before 
+public void setUp() { 
+System.setProperty("webdriver.chrome.driver", "path/to/chromedriver"); 
+driver = new ChromeDriver(); 
+MRITS Page 22 
+Downloaded by 11785 Aravind Kumar N (aravindkumarn@scce.ac.in) 
+lOMoARcPSD|37614292 
+III-II B-TECH CSE (AIML) 
+DEVOPS LAB MANUAL 
+} 
+@Test 
+public void testHomePageLoads() { 
+driver.get("http://localhost:8080"); 
+String title = driver.getTitle(); 
+assert title.equals("My Containerized Application"); 
+} 
+@Test 
+public void testSubmitForm() { 
+driver.get("http://localhost:8080"); 
+driver.findElement(By.name("name")).sendKeys("John Doe"); 
+driver.findElement(By.name("email")).sendKeys("john.doe@example.co 
+85 
+m"); 
+driver.findElement(By.name("submit")).click(); 
+String result = driver.findElement(By.id("result")).getText(); 
+assert result.equals("Form submitted successfully!"); 
+} 
+@After 
+public void tearDown() { 
+driver.quit(); 
+} 
+} 
+You can run the test cases using the following command: 
+$ javac Main.java 
+$ java Main 
+The output of the test cases should be: 
+.. 
+Time: 1.135 
+OK (2 tests) 
+This output indicates that both test cases passed, and the containerized 
+application is functioning as expected.
