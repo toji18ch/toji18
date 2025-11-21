@@ -1,125 +1,111 @@
-5.a)Learn About Stateful And Stateless widgets.
-Ans)
+Experiment-5: 
+Demonstrate continuous integration and development using 
+Jenkins 
+ 
+Objective: The objective of this experiment is to demonstrate the implementation of continuous 
+integration and development using Jenkins. Specifically, the goal is to create a Jenkins pipeline 
+that automates the build, test, and artifact generation process for a sample web application 
+hosted on GitHub. 
+Description: 
+1. Setup Jenkins: Install and configure Jenkins on a server or local machine. 
+2. Install Required Plugins: Install necessary plugins in Jenkins such as Git, GitHub, and any 
+other plugins required for the pipeline. 
+3. Create Pipeline Job: Create a new pipeline job in Jenkins. 
+4. Configure Pipeline: Configure the pipeline to fetch the source code from a GitHub 
+repository. 
+5. Define Stages: Define stages in the pipeline for building, testing, and artifact generation. 
+6. Build Stage: In the build stage, compile the source code and package it into a deployable 
+artifact. 
+7. Test Stage: Execute automated tests on the compiled code to ensure its quality and 
+functionality. 
+8. Artifact Generation Stage: Generate a .rar artifact containing the necessary files, such as 
+dev.html, from the build. 
+Steps: 
+Your github repository must contain two files ., one is dev.html and next file 
+is – jenkinsfile 
+ 
+Jenkinsfile code: 
+pipeline { 
+    agent any 
+     
+    stages { 
+        stage('Checkout') { 
+            steps { 
+                // Checkout the repository 
+                git branch: 'main', credentialsId: 'GitHubCreds', url: 
+'https://github.com/NAGENDRASAICH/htmlfilerepo.git' 
+            } 
+        } 
+         
+        stage('Build and Test') { 
+            steps { 
+                // Here you can perform any build and test operations 
+                // For simplicity, let's just print a success message 
+                echo 'Build and Test successful!' 
+            } 
+        } 
+         
+        stage('Generate Artifact') { 
+            steps { 
+                // Create the artifacts directory if it doesn't exist 
+                sh 'mkdir -p artifacts' 
+                // Copy the dev.html file to the artifacts directory 
+                sh 'cp dev.html ./artifacts/' 
+            } 
+        } 
+    } 
+     
+    post { 
+        success { 
+            // Archive the generated artifact 
+            archiveArtifacts artifacts: 'artifacts/*.html', onlyIfSuccessful: true 
+            // Print a success message if the pipeline completes successfully 
+            echo 'Pipeline completed successfully!' 
+        } 
+    } 
+} 
+ 
+ 
+Dev.html code: 
+<html> 
+      <head> 
+             <title>registration form</title> 
+      </head> 
+      <body> 
+      <h6> 
+      <label="name">Name:</label> 
+      <input type="text" name="name"><br><br> 
+     <label="age">Age:</label> 
+     <input type="text" name="Age"><br><br> 
+     <label="DOB">DOB:</label> 
+     <input type="text" name="DOB"><br><br> 
+    <label="mobile no">Mobile No:</label> 
+    <input type="text" name="mobile no"><br><br> 
+    <label="gmail">Gmail:</label> 
+    <input type="text" name="Gmail"><br><br> 
+    <input type="submit" value="submit"><br><br> 
+    </h6> 
+    </body> 
+</html> 
 
-import'package:flutter/material.dart'; void main() {
-runApp(MyApp());
-}
-classMyAppextendsStatelessWidget{ @override
-Widgetbuild(BuildContextcontext){ return MaterialApp(
-title:'StatefulandStatelessExample', theme: ThemeData(
-primarySwatch:Colors.blue,
-),
-home:MyHomePage(),
-);
-}
-}
+ 
+ 
+ 
+  
+ 
+As you see these two files are stored in main branch 
+ 
+Now, Copy this URL and paste it in jenkins 
 
-classMyHomePageextendsStatefulWidget{ @override
-_MyHomePageStatecreateState()=>_MyHomePageState();
-}
-
-class_MyHomePageStateextendsState<MyHomePage>{ int counter = 0;
-
-voidincrementCounter(){ setState(() {
-counter++;
-});
-}
-@override
-Widgetbuild(BuildContextcontext){ return Scaffold(
-appBar: AppBar(
-title:Text('StatefulandStatelessExample'),
-),
-body:Column(
-mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-CounterDisplay(counter), SizedBox(height: 20), CounterButton(incrementCounter),
-],
-),
-);
-}
-}
-
-classCounterDisplayextendsStatelessWidget{ final int count;
-CounterDisplay(this.count); @override
-Widgetbuild(BuildContextcontext){
-returnText(
-'Counter Value: $count',style:TextStyle(fontSize:20),
-);
-}
-}
-
-classCounterButtonextendsStatelessWidget{ final VoidCallback onPressed;
-CounterButton(this.onPressed); @override
-Widgetbuild(BuildContextcontext){ return ElevatedButton(
-onPressed:onPressed,
-child:Text('IncrementCounter'),
-);
-}
-}
-
-
-5b)Implement state management using setState and Provider.
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => CounterModel(),
-      child: MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'State Management Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: CounterPage(),
-    );
-  }
-}
-
-class CounterModel extends ChangeNotifier {
-  int _counter = 0;
-
-  int get counter => _counter;
-
-  void incrementCounter() {
-    _counter++;
-    notifyListeners();
-  }
-}
-
-class CounterPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final counterModel = Provider.of<CounterModel>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('State Management Example'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Counter Value: ${counterModel.counter}',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: counterModel.incrementCounter,
-              child: Text('Increment Counter'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+ 
+ After completion of all stages, artefact will be generated and , by 
+clicking on download button you can download an artefact 
+ 
+ 
+Program Outcomes: 
+1. Automated Build Process: Successfully automate the build process of the web 
+application using Jenkins. 
+2. Automated Testing: Implement automated tests to verify the functionality and quality of 
+the code. 
+3. Artifact Generation: Generate a .rar artifact containing the dev.html file as per the 
+pipeline configuration.
