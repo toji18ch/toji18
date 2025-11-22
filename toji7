@@ -35,3 +35,86 @@ http://localhost:<port> if port mapping was configured.
  
  
 sudo docker run -d -p 8888:80 --name my-html-container my-html-image 
+rhttp://localhost: – if port mapping was configured
+
+Docker is an open-source container platform designed to build, distribute, and run applications inside containers. In comparison to the traditional virtualization functionalities of hypervisors, Docker containers eliminate the need for the separate guest operating system. Docker includes components such as Docker client, Docker server, Docker machine, Docker hub, Docker compose, etc.
+
+⸻
+
+Advantages of Docker:
+	•	It runs containers in seconds instead of minutes.
+	•	It uses less memory.
+	•	It provides lightweight virtualization.
+	•	It does not require a separate full operating system to run an application.
+	•	It uses application dependencies to reduce the risk.
+	•	Docker allows you to use a remote repository to share your containers with others.
+
+⸻
+
+Docker Architecture:
+
+What is Docker’s daemon?
+Docker runs on the host operating system. It is responsible for running containers and managing Docker services.
+Docker daemon communicates with other daemons. It offers various Docker objects such as images, containers, networking, and storage.
+
+Docker follows client-server architecture, which includes the three main components that are Docker client, Docker host, and Docker registry.
+
+Docker client:
+Docker client uses commands and REST APIs to communicate with the Docker daemon (server).
+Docker Commands
+
+Docker Images Commands:
+	•	docker pull – to pull an image from Docker Hub.
+	•	docker commit – saves the state of a container into a new image.
+	•	docker build – it will create an image by using a Dockerfile.
+	•	docker images – list all local images.
+	•	docker run – to create a container from the image.
+	•	docker pull – to download image from repository.
+	•	docker rmi – to delete a local image.
+
+⸻
+
+Docker Containers and its Commands
+
+Container: It’s a running instance of an image.
+	•	docker ps – to list all running containers.
+	•	docker ps -a – lists all containers including stopped ones.
+	•	docker start – to start a stopped container.
+	•	docker stop – to stop running containers.
+	•	docker top – to display processes of a container.
+	•	docker pause – to pause a container.
+	•	docker rm – to delete a container.
+	•	docker exit – to quit from the container.
+	•	docker commit – to create an image from the container.
+	•	docker exec – to enter into a running container.
+
+⸻
+
+Practice Commands
+	1.	Ubuntu update: sudo apt update
+	2.	Docker installation: sudo apt install docker.io
+	3.	To display Docker version: sudo docker version
+	4.	Pull Docker image: (incomplete in notebook)
+1. a) sudo docker pull nginx
+b) sudo docker pull centos:7
+c) sudo docker pull python
+2. To display list of images: sudo docker images
+3. Container creation or run container.
+a) sudo docker run -it image id (python)
+* Ex: sudo docker run -it a4b7090c817b
+b) sudo docker run -it image id (nginx)
+* Ex: sudo docker run -it 07cfd8783e75
+4. To come back to ubuntu terminal: ctrl + c or exit or ctrl + x
+5. To display list of containers: sudo docker ps -a
+6. To start docker container:
+a) sudo docker start container id (python)
+* Ex: sudo docker start 4c193b60797f
+b) sudo docker start container id (nginx)
+* Ex: sudo docker start 58691298fc2
+7. To see the running status: sudo docker ps -a
+• O/P: Status is Changed.
+8. To remove image: sudo docker rmi image ID
+9. To remove container: sudo docker rm container ID
+10. To stop the container: sudo docker pause container ID
+11. To pause the container: sudo docker pause container ID
+12. To display your container in 8080 port: sudo docker run -p 8080:80 nginx use public IP of AWS instance with 8080 port
